@@ -93,99 +93,99 @@ Table of Contents
      6.3.  Using Reserved Versions 使用保留版本
    7.  Cryptographic and Transport Handshake 加密和传输握手
      7.1.  Example Handshake Flows 握手流程示例
-     7.2.  Negotiating Connection IDs
-     7.3.  Authenticating Connection IDs
-     7.4.  Transport Parameters
-       7.4.1.  Values of Transport Parameters for 0-RTT
-       7.4.2.  New Transport Parameters
-     7.5.  Cryptographic Message Buffering
-   8.  Address Validation
-     8.1.  Address Validation during Connection Establishment
-       8.1.1.  Token Construction
-       8.1.2.  Address Validation Using Retry Packets
-       8.1.3.  Address Validation for Future Connections
-       8.1.4.  Address Validation Token Integrity
-     8.2.  Path Validation
-       8.2.1.  Initiating Path Validation
-       8.2.2.  Path Validation Responses
-       8.2.3.  Successful Path Validation
-       8.2.4.  Failed Path Validation
-   9.  Connection Migration
-     9.1.  Probing a New Path
-     9.2.  Initiating Connection Migration
-     9.3.  Responding to Connection Migration
-       9.3.1.  Peer Address Spoofing
-       9.3.2.  On-Path Address Spoofing
-       9.3.3.  Off-Path Packet Forwarding
-     9.4.  Loss Detection and Congestion Control
-     9.5.  Privacy Implications of Connection Migration
-     9.6.  Server's Preferred Address
-       9.6.1.  Communicating a Preferred Address
-       9.6.2.  Migration to a Preferred Address
-       9.6.3.  Interaction of Client Migration and Preferred Address
-     9.7.  Use of IPv6 Flow Label and Migration
-   10. Connection Termination
-     10.1.  Idle Timeout
-       10.1.1.  Liveness Testing
-       10.1.2.  Deferring Idle Timeout
-     10.2.  Immediate Close
-       10.2.1.  Closing Connection State
-       10.2.2.  Draining Connection State
-       10.2.3.  Immediate Close during the Handshake
-     10.3.  Stateless Reset
-       10.3.1.  Detecting a Stateless Reset
-       10.3.2.  Calculating a Stateless Reset Token
-       10.3.3.  Looping
-   11. Error Handling
-     11.1.  Connection Errors
-     11.2.  Stream Errors
-   12. Packets and Frames
-     12.1.  Protected Packets
-     12.2.  Coalescing Packets
-     12.3.  Packet Numbers
-     12.4.  Frames and Frame Types
-     12.5.  Frames and Number Spaces
-   13. Packetization and Reliability
-     13.1.  Packet Processing
-     13.2.  Generating Acknowledgments
-       13.2.1.  Sending ACK Frames
-       13.2.2.  Acknowledgment Frequency
-       13.2.3.  Managing ACK Ranges
-       13.2.4.  Limiting Ranges by Tracking ACK Frames
-       13.2.5.  Measuring and Reporting Host Delay
-       13.2.6.  ACK Frames and Packet Protection
-       13.2.7.  PADDING Frames Consume Congestion Window
-     13.3.  Retransmission of Information
-     13.4.  Explicit Congestion Notification
-       13.4.1.  Reporting ECN Counts
-       13.4.2.  ECN Validation
-   14. Datagram Size
-     14.1.  Initial Datagram Size
-     14.2.  Path Maximum Transmission Unit
-       14.2.1.  Handling of ICMP Messages by PMTUD
-     14.3.  Datagram Packetization Layer PMTU Discovery
-       14.3.1.  DPLPMTUD and Initial Connectivity
-       14.3.2.  Validating the Network Path with DPLPMTUD
-       14.3.3.  Handling of ICMP Messages by DPLPMTUD
-     14.4.  Sending QUIC PMTU Probes
-       14.4.1.  PMTU Probes Containing Source Connection ID
-   15. Versions
-   16. Variable-Length Integer Encoding
-   17. Packet Formats
-     17.1.  Packet Number Encoding and Decoding
-     17.2.  Long Header Packets
-       17.2.1.  Version Negotiation Packet
-       17.2.2.  Initial Packet
+     7.2.  Negotiating Connection IDs 协商连接ID
+     7.3.  Authenticating Connection IDs 认证连接ID
+     7.4.  Transport Parameters 传输参数
+       7.4.1.  Values of Transport Parameters for 0-RTT 0-RTT的传输参数值
+       7.4.2.  New Transport Parameters 新的传输参数
+     7.5.  Cryptographic Message Buffering 加密消息缓存
+   8.  Address Validation 地址验证
+     8.1.  Address Validation during Connection Establishment 连接建立期间的地址验证
+       8.1.1.  Token Construction token创建
+       8.1.2.  Address Validation Using Retry Packets 使用重试数据包进行地址验证
+       8.1.3.  Address Validation for Future Connections 未来连接的地址验证
+       8.1.4.  Address Validation Token Integrity 地址验证token完整性
+     8.2.  Path Validation 路径验证
+       8.2.1.  Initiating Path Validation 启动路径验证
+       8.2.2.  Path Validation Responses 路径验证响应
+       8.2.3.  Successful Path Validation 成功的路径验证
+       8.2.4.  Failed Path Validation 失败的路径验证
+   9.  Connection Migration 连接迁移
+     9.1.  Probing a New Path 探索新路径
+     9.2.  Initiating Connection Migration 启动连接迁移
+     9.3.  Responding to Connection Migration 响应连接迁移
+       9.3.1.  Peer Address Spoofing 对等地址欺骗
+       9.3.2.  On-Path Address Spoofing 路径地址欺骗
+       9.3.3.  Off-Path Packet Forwarding 偏离路径数据包转发
+     9.4.  Loss Detection and Congestion Control 丢失检测和拥塞控制
+     9.5.  Privacy Implications of Connection Migration 连接迁移的隐私影响
+     9.6.  Server's Preferred Address 服务器的首选地址
+       9.6.1.  Communicating a Preferred Address 和首选地址通信
+       9.6.2.  Migration to a Preferred Address 迁移到首选地址
+       9.6.3.  Interaction of Client Migration and Preferred Address 客户端迁移与首选地址的交互
+     9.7.  Use of IPv6 Flow Label and Migration IPv6流标签的使用和迁移
+   10. Connection Termination 连接终止
+     10.1.  Idle Timeout 空闲超时
+       10.1.1.  Liveness Testing 存活测试
+       10.1.2.  Deferring Idle Timeout 延迟空闲超时
+     10.2.  Immediate Close 立即关闭
+       10.2.1.  Closing Connection State 关闭连接状态
+       10.2.2.  Draining Connection State 清空连接状态
+       10.2.3.  Immediate Close during the Handshake 握手期间立即关闭
+     10.3.  Stateless Reset 无状态重置
+       10.3.1.  Detecting a Stateless Reset 检测无状态重置
+       10.3.2.  Calculating a Stateless Reset Token 计算无状态重置token
+       10.3.3.  Looping 循环
+   11. Error Handling 错误处理
+     11.1.  Connection Errors 连接错误
+     11.2.  Stream Errors 流错误
+   12. Packets and Frames 数据包和帧
+     12.1.  Protected Packets 受保护的数据包
+     12.2.  Coalescing Packets 合并数据包
+     12.3.  Packet Numbers 数据包编号
+     12.4.  Frames and Frame Types 帧和帧类型
+     12.5.  Frames and Number Spaces 帧和数字编号空间
+   13. Packetization and Reliability 打包和可靠性
+     13.1.  Packet Processing 数据包处理
+     13.2.  Generating Acknowledgments 生成ACK确认
+       13.2.1.  Sending ACK Frames 发送ACK帧
+       13.2.2.  Acknowledgment Frequency ACK的频率
+       13.2.3.  Managing ACK Ranges 管理ACK范围
+       13.2.4.  Limiting Ranges by Tracking ACK Frames 通过跟踪ACK帧来限制范围
+       13.2.5.  Measuring and Reporting Host Delay 测量和报告主机延迟
+       13.2.6.  ACK Frames and Packet Protection ACK帧和数据包保护
+       13.2.7.  PADDING Frames Consume Congestion Window PADDING帧消耗拥塞窗口
+     13.3.  Retransmission of Information 信息重传
+     13.4.  Explicit Congestion Notification 显式拥塞通知
+       13.4.1.  Reporting ECN Counts 报告ECN计数
+       13.4.2.  ECN Validation ECN验证
+   14. Datagram Size 数据报大小
+     14.1.  Initial Datagram Size 初始数据报大小
+     14.2.  Path Maximum Transmission Unit 路径最大传输单元
+       14.2.1.  Handling of ICMP Messages by PMTUD 通过PMTUD处理ICMP消息
+     14.3.  Datagram Packetization Layer PMTU Discovery 数据报分组层PMTU发现
+       14.3.1.  DPLPMTUD and Initial Connectivity DPLPMTUD和初始连接
+       14.3.2.  Validating the Network Path with DPLPMTUD 使用DPLPMTUD验证网络路径
+       14.3.3.  Handling of ICMP Messages by DPLPMTUD 通过DPLPMTUD处理ICMP消息
+     14.4.  Sending QUIC PMTU Probes 发送 QUIC PMTU 探测
+       14.4.1.  PMTU Probes Containing Source Connection ID 包含源连接ID的PMTU探测
+   15. Versions 版本
+   16. Variable-Length Integer Encoding 变长整数编码
+   17. Packet Formats 数据包格式
+     17.1.  Packet Number Encoding and Decoding 数据包Number的编码和解码
+     17.2.  Long Header Packets 长头部数据包
+       17.2.1.  Version Negotiation Packet 版本协商数据包
+       17.2.2.  Initial Packet 初始数据包
        17.2.3.  0-RTT
-       17.2.4.  Handshake Packet
-       17.2.5.  Retry Packet
-     17.3.  Short Header Packets
-       17.3.1.  1-RTT Packet
-     17.4.  Latency Spin Bit
-   18. Transport Parameter Encoding
-     18.1.  Reserved Transport Parameters
-     18.2.  Transport Parameter Definitions
-   19. Frame Types and Formats
+       17.2.4.  Handshake Packet 握手数据包
+       17.2.5.  Retry Packet 重试数据包
+     17.3.  Short Header Packets 短头部数据包
+       17.3.1.  1-RTT Packet 1-RTT数据包
+     17.4.  Latency Spin Bit 延迟自旋位
+   18. Transport Parameter Encoding 传输参数编码
+     18.1.  Reserved Transport Parameters 保留传输参数
+     18.2.  Transport Parameter Definitions 传输参数定义
+   19. Frame Types and Formats 帧类型和格式
      19.1.  PADDING Frames
      19.2.  PING Frames
      19.3.  ACK Frames
@@ -209,55 +209,55 @@ Table of Contents
      19.19. CONNECTION_CLOSE Frames
      19.20. HANDSHAKE_DONE Frames
      19.21. Extension Frames
-   20. Error Codes
-     20.1.  Transport Error Codes
-     20.2.  Application Protocol Error Codes
-   21. Security Considerations
-     21.1.  Overview of Security Properties
-       21.1.1.  Handshake
-       21.1.2.  Protected Packets
-       21.1.3.  Connection Migration
-     21.2.  Handshake Denial of Service
-     21.3.  Amplification Attack
-     21.4.  Optimistic ACK Attack
-     21.5.  Request Forgery Attacks
-       21.5.1.  Control Options for Endpoints
-       21.5.2.  Request Forgery with Client Initial Packets
-       21.5.3.  Request Forgery with Preferred Addresses
-       21.5.4.  Request Forgery with Spoofed Migration
-       21.5.5.  Request Forgery with Version Negotiation
-       21.5.6.  Generic Request Forgery Countermeasures
-     21.6.  Slowloris Attacks
-     21.7.  Stream Fragmentation and Reassembly Attacks
-     21.8.  Stream Commitment Attack
-     21.9.  Peer Denial of Service
-     21.10. Explicit Congestion Notification Attacks
+   20. Error Codes 错误代码
+     20.1.  Transport Error Codes 传输错误代码
+     20.2.  Application Protocol Error Codes 应用程序协议错误代码
+   21. Security Considerations 安全注意事项
+     21.1.  Overview of Security Properties 安全属性概述
+       21.1.1.  Handshake 握手
+       21.1.2.  Protected Packets 受保护的数据包
+       21.1.3.  Connection Migration 连接迁移
+     21.2.  Handshake Denial of Service 握手拒绝服务
+     21.3.  Amplification Attack 放大攻击
+     21.4.  Optimistic ACK Attack 乐观ACK攻击
+     21.5.  Request Forgery Attacks 请求伪造攻击
+       21.5.1.  Control Options for Endpoints 端点的控制选项
+       21.5.2.  Request Forgery with Client Initial Packets 使用客户端初始数据包请求伪造
+       21.5.3.  Request Forgery with Preferred Addresses 使用首选地址请求伪造
+       21.5.4.  Request Forgery with Spoofed Migration 使用欺骗迁移请求伪造
+       21.5.5.  Request Forgery with Version Negotiation 通过版本协商请求伪造
+       21.5.6.  Generic Request Forgery Countermeasures 通用的请求伪造应对策略
+     21.6.  Slowloris Attacks 懒猴攻击
+     21.7.  Stream Fragmentation and Reassembly Attacks 流分片和重组攻击
+     21.8.  Stream Commitment Attack 流承诺攻击
+     21.9.  Peer Denial of Service 对等拒绝服务
+     21.10. Explicit Congestion Notification Attacks 显式拥塞通知攻击
      21.11. Stateless Reset Oracle
-     21.12. Version Downgrade
-     21.13. Targeted Attacks by Routing
-     21.14. Traffic Analysis
-   22. IANA Considerations
-     22.1.  Registration Policies for QUIC Registries
-       22.1.1.  Provisional Registrations
-       22.1.2.  Selecting Codepoints
-       22.1.3.  Reclaiming Provisional Codepoints
-       22.1.4.  Permanent Registrations
-     22.2.  QUIC Versions Registry
-     22.3.  QUIC Transport Parameters Registry
-     22.4.  QUIC Frame Types Registry
-     22.5.  QUIC Transport Error Codes Registry
-   23. References
-     23.1.  Normative References
-     23.2.  Informative References
-   Appendix A.  Pseudocode
-     A.1.  Sample Variable-Length Integer Decoding
-     A.2.  Sample Packet Number Encoding Algorithm
-     A.3.  Sample Packet Number Decoding Algorithm
-     A.4.  Sample ECN Validation Algorithm
-   Contributors
-   Authors' Addresses
+     21.12. Version Downgrade 版本降级
+     21.13. Targeted Attacks by Routing 通过路由进行有针对性的攻击
+     21.14. Traffic Analysis 流量分析
+   22. IANA Considerations IANA注意事项
+     22.1.  Registration Policies for QUIC Registries QUIC注册中心的注册政策
+       22.1.1.  Provisional Registrations 临时注册
+       22.1.2.  Selecting Codepoints 选择代码点
+       22.1.3.  Reclaiming Provisional Codepoints 回收临时代码点
+       22.1.4.  Permanent Registrations 永久注册
+     22.2.  QUIC Versions Registry QUIC版本注册表
+     22.3.  QUIC Transport Parameters Registry QUIC传输参数注册表
+     22.4.  QUIC Frame Types Registry QUIC帧类型注册表
+     22.5.  QUIC Transport Error Codes Registry QUIC传输错误代码注册表
+   23. References 参考
+     23.1.  Normative References 规范参考
+     23.2.  Informative References 参考资料
+   Appendix A.  Pseudocode 伪代码
+     A.1.  Sample Variable-Length Integer Decoding 示例：变长整数解码
+     A.2.  Sample Packet Number Encoding Algorithm 示例：数据包Number编码算法
+     A.3.  Sample Packet Number Decoding Algorithm 示例：数据包Number解码算法
+     A.4.  Sample ECN Validation Algorithm 示例：ECN验证算法
+   Contributors 贡献者
+   Authors' Addresses 作者地址
 
-1.  Overview
+1.  Overview 概述
 
    QUIC is a secure general-purpose transport protocol.  This document
    defines version 1 of QUIC, which conforms to the version-independent
@@ -2427,12 +2427,16 @@ Table of Contents
    that is being attempted, including the choice of possible application
    protocols, session tickets, or other connection properties.
 
-8.1.4.  Address Validation Token Integrity
+8.1.4.  Address Validation Token Integrity 地址验证token完整性
 
    An address validation token MUST be difficult to guess.  Including a
    random value with at least 128 bits of entropy in the token would be
    sufficient, but this depends on the server remembering the value it
    sends to clients.
+
+   entropy: 熵
+   地址验证token必须难以猜测。在token中包含一个至少具有128位熵的随机值就足够了，
+   但这取决于服务器记住它发送给客户端的值。
 
    A token-based scheme allows the server to offload any state
    associated with validation to the client.  For this design to work,
@@ -2441,6 +2445,14 @@ Table of Contents
    protection, malicious clients could generate or guess values for
    tokens that would be accepted by the server.  Only the server
    requires access to the integrity protection key for tokens.
+
+   offload: 卸载
+   falsification: 伪造
+   malicious: 恶意的
+   基于token的方案允许服务器将与验证相关的任何状态放到客户端。
+   为了使此设计起作用，token必须受到完整性保护以防止客户端修改或伪造。
+   如果没有完整性保护，恶意客户端可能会生成或猜测服务器可接受的token值。
+   只有服务器需要访问token的完整性保护密钥。
 
    There is no need for a single well-defined format for the token
    because the server that generates the token also consumes it.  Tokens
@@ -4823,7 +4835,7 @@ Table of Contents
       |  need to be a valid packet, and it can be sent even if there is
       |  no current use for packets of that type.
 
-15.  Versions
+15.  Versions 版本
 
    QUIC versions are identified using a 32-bit unsigned number.
 
@@ -4854,7 +4866,7 @@ Table of Contents
    support for one of these versions and can expect that clients ignore
    the value.
 
-16.  Variable-Length Integer Encoding
+16.  Variable-Length Integer Encoding 变长整数编码
 
    QUIC packets and frames commonly use a variable-length encoding for
    non-negative integer values.  This encoding ensures that smaller
