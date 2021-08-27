@@ -24,6 +24,11 @@ Abstract
    TLS for key negotiation, loss detection, and an exemplary congestion
    control algorithm.
 
+   本文档定义了 QUIC 传输协议的核心。
+   QUIC 为应用程序提供基于流控的流，用于结构化通信、低延迟连接建立和网络路径迁移。
+   QUIC 提供的安全措施，可确保在一系列部署环境中的机密性、完整性和可用性。
+   随附文件描述了集成了TLS的密钥协商、丢失检测和一个拥塞控制算法的示例。
+
 Status of This Memo
 
    This is an Internet Standards Track document.
@@ -3694,7 +3699,7 @@ Table of Contents
    Application protocols SHOULD define rules for handling streams that
    are prematurely canceled by either endpoint.
 
-12.  Packets and Frames
+12.  Packets and Frames 数据包和帧
 
    QUIC endpoints communicate by exchanging packets.  Packets have
    confidentiality and integrity protection; see Section 12.1.  Packets
@@ -3711,7 +3716,7 @@ Table of Contents
    are used after a connection is established and 1-RTT keys are
    available; see Section 17.3.
 
-12.1.  Protected Packets
+12.1.  Protected Packets 受保护的数据包
 
    QUIC packets have different levels of cryptographic protection based
    on the type of packet.  Details of packet protection are found in
@@ -3746,7 +3751,7 @@ Table of Contents
    underlying packet number increases with each packet sent in a given
    packet number space; see Section 12.3 for details.
 
-12.2.  Coalescing Packets
+12.2.  Coalescing Packets 合并数据包
 
    Initial (Section 17.2.2), 0-RTT (Section 17.2.3), and Handshake
    (Section 17.2.4) packets contain a Length field that determines the
@@ -3793,7 +3798,7 @@ Table of Contents
    a Retry or Version Negotiation packet is coalesced with another
    packet.
 
-12.3.  Packet Numbers
+12.3.  Packet Numbers 数据包编号
 
    The packet number is an integer in the range 0 to 2^62-1.  This
    number is used in determining the cryptographic nonce for packet
@@ -3864,7 +3869,7 @@ Table of Contents
    Packet number encoding at a sender and decoding at a receiver are
    described in Section 17.1.
 
-12.4.  Frames and Frame Types
+12.4.  Frames and Frame Types 帧和帧类型
 
    The payload of QUIC packets, after removing packet protection,
    consists of a sequence of complete frames, as shown in Figure 11.
@@ -4012,7 +4017,7 @@ Table of Contents
    receipt of a frame type that uses a longer encoding than necessary as
    a connection error of type PROTOCOL_VIOLATION.
 
-12.5.  Frames and Number Spaces
+12.5.  Frames and Number Spaces 帧和数字编号空间
 
    Some frames are prohibited in different packet number spaces.  The
    rules here generalize those of TLS, in that frames associated with
@@ -4041,7 +4046,7 @@ Table of Contents
    of these frames in 0-RTT packets as a connection error of type
    PROTOCOL_VIOLATION.
 
-13.  Packetization and Reliability
+13.  Packetization and Reliability 打包和可靠性
 
    A sender sends one or more frames in a QUIC packet; see Section 12.4.
 
@@ -4070,7 +4075,7 @@ Table of Contents
    necessary in outgoing packets without losing transmission efficiency
    to underfilled packets.
 
-13.1.  Packet Processing
+13.1.  Packet Processing 数据包处理
 
    A packet MUST NOT be acknowledged until packet protection has been
    successfully removed and all frames contained in the packet have been
@@ -4087,7 +4092,7 @@ Table of Contents
    is able to detect the condition.  For further discussion of how this
    might be achieved, see Section 21.4.
 
-13.2.  Generating Acknowledgments
+13.2.  Generating Acknowledgments 生成ACK确认
 
    Endpoints acknowledge all packets they receive and process.  However,
    only ack-eliciting packets cause an ACK frame to be sent within the
@@ -4104,7 +4109,7 @@ Table of Contents
    every ack-eliciting packet.  The guidance offered below seeks to
    strike this balance.
 
-13.2.1.  Sending ACK Frames
+13.2.1.  Sending ACK Frames 发送ACK帧
 
    Every packet SHOULD be acknowledged at least once, and ack-eliciting
    packets MUST be acknowledged at least once within the maximum delay
@@ -4173,7 +4178,7 @@ Table of Contents
    for connections made by the endpoint and for other users of the
    network.
 
-13.2.2.  Acknowledgment Frequency
+13.2.2.  Acknowledgment Frequency ACK的频率
 
    A receiver determines how frequently to send acknowledgments in
    response to ack-eliciting packets.  This determination involves a
