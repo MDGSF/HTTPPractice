@@ -1,4 +1,4 @@
-﻿
+
 
 
 
@@ -9,11 +9,15 @@ ISSN: 2070-1721
 
 
                  Version-Independent Properties of QUIC
+                 QUIC 中和版本无关的属性
 
 Abstract
+摘要
 
    This document defines the properties of the QUIC transport protocol
    that are common to all versions of the protocol.
+
+   本文档定义了 QUIC 传输协议的所有版本共有的属性。
 
 Status of This Memo
 
@@ -45,32 +49,37 @@ Copyright Notice
    described in the Simplified BSD License.
 
 Table of Contents
+目录
 
-   1.  An Extremely Abstract Description of QUIC
-   2.  Fixed Properties of All QUIC Versions
-   3.  Conventions and Definitions
-   4.  Notational Conventions
-   5.  QUIC Packets
-     5.1.  Long Header
-     5.2.  Short Header
-     5.3.  Connection ID
-     5.4.  Version
-   6.  Version Negotiation
-   7.  Security and Privacy Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
-   Appendix A.  Incorrect Assumptions
-   Author's Address
+   1.  An Extremely Abstract Description of QUIC 一份极其抽象的QUIC描述
+   2.  Fixed Properties of All QUIC Versions 所有QUIC版本的固定属性
+   3.  Conventions and Definitions 约定和定义
+   4.  Notational Conventions 符号约定
+   5.  QUIC Packets QUIC数据包
+     5.1.  Long Header 长头部
+     5.2.  Short Header 短头部
+     5.3.  Connection ID 连接ID
+     5.4.  Version 版本
+   6.  Version Negotiation 版本协商
+   7.  Security and Privacy Considerations 安全和隐私注意事项
+   8.  References 参考
+     8.1.  Normative References 规范参考
+     8.2.  Informative References 参考资料
+   Appendix A.  Incorrect Assumptions 附录A. 不正确的假设
+   Author's Address 作者地址
 
-1.  An Extremely Abstract Description of QUIC
+1.  An Extremely Abstract Description of QUIC 一份极其抽象的QUIC描述
 
    QUIC is a connection-oriented protocol between two endpoints.  Those
    endpoints exchange UDP datagrams.  These UDP datagrams contain QUIC
    packets.  QUIC endpoints use QUIC packets to establish a QUIC
    connection, which is shared protocol state between those endpoints.
 
-2.  Fixed Properties of All QUIC Versions
+   QUIC 是两个端点之间的面向连接的协议。
+   这些端点交换 UDP 数据报。这些 UDP 数据报包含 QUIC 数据包。
+   QUIC 端点使用 QUIC 数据包建立 QUIC 连接，这是这些端点之间共享的协议状态。
+
+2.  Fixed Properties of All QUIC Versions 所有QUIC版本的固定属性
 
    In addition to providing secure, multiplexed transport, QUIC
    [QUIC-TRANSPORT] allows for the option to negotiate a version.  This
@@ -78,9 +87,16 @@ Table of Contents
    requirements.  Many characteristics of the protocol could change
    between versions.
 
+   除了提供安全、多路复用的传输之外，QUIC [QUIC-TRANSPORT] 还允许选择协商版本。
+   这允许协议随着时间的推移而改变以响应新的要求。
+   协议的许多特性可能会在版本之间发生变化。
+
    This document describes the subset of QUIC that is intended to remain
    stable as new versions are developed and deployed.  All of these
    invariants are independent of the IP version.
+
+   本文档描述了 QUIC 的子集，旨在在开发和部署新版本时保持稳定。
+   所有这些不变量都与 IP 版本无关。
 
    The primary goal of this document is to ensure that it is possible to
    deploy new versions of QUIC.  By documenting the properties that
@@ -91,11 +107,19 @@ Table of Contents
    Unless specifically prohibited in this document, any aspect of the
    protocol can change between different versions.
 
+   本文档的主要目标是确保可以部署新版本的 QUIC。
+   通过记录不能更改的属性，本文档旨在保留 QUIC 端点协商协议任何其他方面的更改的能力。
+   因此，这也保证了对端点以外的实体可用的信息量最少。
+   除非在本文档中明确禁止，否则协议的任何方面都可以在不同版本之间更改。
+
    Appendix A contains a non-exhaustive list of some incorrect
    assumptions that might be made based on knowledge of QUIC version 1;
    these do not apply to every version of QUIC.
 
-3.  Conventions and Definitions
+   附录 A 包含一些基于 QUIC 版本 1 的知识可能做出的错误假设的非详尽列表；
+   这些不适用于 QUIC 的每个版本。
+
+3.  Conventions and Definitions 约定和定义
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -109,34 +133,55 @@ Table of Contents
    This document uses terms and notational conventions from
    [QUIC-TRANSPORT].
 
-4.  Notational Conventions
+4.  Notational Conventions 符号约定
 
    The format of packets is described using the notation defined in this
    section.  This notation is the same as that used in [QUIC-TRANSPORT].
+
+   数据包的格式使用本节中定义的符号来描述。
+   此符号与 [QUIC-TRANSPORT] 中使用的符号相同。
 
    Complex fields are named and then followed by a list of fields
    surrounded by a pair of matching braces.  Each field in this list is
    separated by commas.
 
+   复杂字段被命名，然后是由一对匹配的大括号包围的字段列表。
+   此列表中的每个字段都用逗号分隔。
+
    Individual fields include length information, plus indications about
    fixed value, optionality, or repetitions.  Individual fields use the
    following notational conventions, with all lengths in bits:
 
+   单个字段包括长度信息，以及关于固定值、可选性或重复的指示。
+   各个字段使用以下符号约定，所有长度均以位为单位：
+
    x (A):  Indicates that x is A bits long
+
+   x (A): 表示x的长度有A个bit
 
    x (A..B):  Indicates that x can be any length from A to B; A can be
       omitted to indicate a minimum of zero bits, and B can be omitted
       to indicate no set upper limit; values in this format always end
       on a byte boundary
 
+   x (A..B): 表示x可以是从A到B的任意长度；
+     可以省略A表示最小零位，省略B表示没有设置上限；
+     这种格式的值总是以字节边界结束
+
    x (L) = C:  Indicates that x has a fixed value of C; the length of x
       is described by L, which can use any of the length forms above
+
+   x (L) = C: 表示x具有固定值C； x的长度由L描述，它可以使用上述任何长度形式
 
    x (L) ...:  Indicates that x is repeated zero or more times and that
       each instance has a length of L
 
+   x (L) ...: 表示x重复零次或多次，并且每个实例的长度为L
+
    This document uses network byte order (that is, big endian) values.
    Fields are placed starting from the high-order bits of each byte.
+
+   本文档使用网络字节顺序（即大端）值。字段从每个字节的高位开始放置。
 
    Figure 1 shows an example structure:
 
@@ -150,7 +195,7 @@ Table of Contents
 
                           Figure 1: Example Format
 
-5.  QUIC Packets
+5.  QUIC Packets QUIC数据包
 
    QUIC endpoints exchange UDP datagrams that contain one or more QUIC
    packets.  This section describes the invariant characteristics of a
@@ -158,19 +203,33 @@ Table of Contents
    a single UDP datagram, but the invariant properties only describe the
    first packet in a datagram.
 
+   QUIC 端点交换包含一个或多个 QUIC 数据包的 UDP 数据报。
+   本节描述 QUIC 数据包的不变特性。
+   QUIC 的一个版本可以允许在单个 UDP 数据报中包含多个 QUIC 数据包，
+   但不变属性仅描述 UDP 数据报中的第一个 QUIC 数据包。
+
    QUIC defines two types of packet headers: long and short.  Packets
    with a long header are identified by the most significant bit of the
    first byte being set; packets with a short header have that bit
    cleared.
 
+   QUIC 定义了两种类型的包头：长的和短的。
+   具有长报头的数据包由设置的第一个字节的最高有效位标识；
+   具有短报头的数据包清除了该位。
+
    QUIC packets might be integrity protected, including the header.
    However, QUIC Version Negotiation packets are not integrity
    protected; see Section 6.
 
+   QUIC 数据包可能受到完整性保护，包括头部。
+   然而，QUIC 版本协商数据包没有完整性保护； 见第 6 节。
+
    Aside from the values described here, the payload of QUIC packets is
    version specific and of arbitrary length.
 
-5.1.  Long Header
+   除了此处描述的内容之外，QUIC 数据包的有效负载是特定于版本的并且具有任意长度。
+
+5.1.  Long Header 长头部
 
    Long headers take the form described in Figure 2.
 
@@ -190,6 +249,9 @@ Table of Contents
    A QUIC packet with a long header has the high bit of the first byte
    set to 1.  All other bits in that byte are version specific.
 
+   带有长报头的 QUIC 数据包的第一个字节的高位设置为 1。
+   该字节中的所有其他位都是特定于版本的。
+
    The next four bytes include a 32-bit Version field.  Versions are
    described in Section 5.4.
 
@@ -206,7 +268,7 @@ Table of Contents
 
    The remainder of the packet contains version-specific content.
 
-5.2.  Short Header
+5.2.  Short Header 短头部
 
    Short headers take the form described in Figure 3.
 
