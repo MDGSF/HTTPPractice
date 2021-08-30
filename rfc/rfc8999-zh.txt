@@ -502,49 +502,84 @@ Appendix A.  Incorrect Assumptions
    *  QUIC uses TLS [QUIC-TLS], and some TLS messages are visible on the
       wire.
 
+      QUIC 使用 TLS [QUIC-TLS]，一些 TLS 消息在线路上可见。
+
    *  QUIC long headers are only exchanged during connection
       establishment.
+
+      QUIC 长头部仅在连接建立期间交换。
 
    *  Every flow on a given 5-tuple will include a connection
       establishment phase.
 
+      给定 5 元组上的每个流都将包括一个连接建立阶段。
+
    *  The first packets exchanged on a flow use the long header.
+
+      流上交换的第一个数据包使用长报头。
 
    *  The last packet before a long period of quiescence might be
       assumed to contain only an acknowledgment.
+
+      可能会假设长时间静止之前的最后一个数据包仅包含一个ACK确认。
 
    *  QUIC uses an Authenticated Encryption with Associated Data (AEAD)
       function (AEAD_AES_128_GCM; see [RFC5116]) to protect the packets
       it exchanges during connection establishment.
 
+      QUIC 使用带有关联数据的身份验证加密（AEAD）功能
+      （AEAD_AES_128_GCM；参见 [RFC5116]）来保护它在连接建立期间交换的数据包。
+
    *  QUIC packet numbers are encrypted and appear as the first
       encrypted bytes.
 
+      QUIC 数据包编号被加密并显示为第一个加密字节。
+
    *  QUIC packet numbers increase by one for every packet sent.
+
+      每发送一个数据包，QUIC 数据包编号增加 1。
 
    *  QUIC has a minimum size for the first handshake packet sent by a
       client.
 
+      对于客户端发送的第一个握手数据包，QUIC 具有最小大小。
+
    *  QUIC stipulates that a client speak first.
+
+      QUIC 规定客户先发言
 
    *  QUIC packets always have the second bit of the first byte (0x40)
       set.
 
+      QUIC 数据包始终设置第一个字节 (0x40) 的第二位。
+
    *  A QUIC Version Negotiation packet is only sent by a server.
 
+      QUIC 版本协商包仅由服务器发送。
+
    *  A QUIC connection ID changes infrequently.
+
+      QUIC 连接 ID 很少更改
 
    *  QUIC endpoints change the version they speak if they are sent a
       Version Negotiation packet.
 
+      如果 QUIC 端点收到版本协商数据包，它们会更改它们使用的版本。
+
    *  The Version field in a QUIC long header is the same in both
       directions.
+
+      QUIC 长头部中的 Version 字段在两个方向上都是相同的。
 
    *  A QUIC packet with a particular value in the Version field means
       that the corresponding version of QUIC is in use.
 
+      Version 字段中具有特定值的 QUIC 数据包表示正在使用相应版本的 QUIC。
+
    *  Only one connection at a time is established between any pair of
       QUIC endpoints.
+
+      任何一对 QUIC 端点之间一次只能建立一个连接。
 
 Author's Address
 
