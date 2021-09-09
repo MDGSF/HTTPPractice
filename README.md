@@ -47,11 +47,20 @@ nghttp -v -n --no-dep -w 14 -a -H "Header1: Foo" https://www.akamai.com
 一些关键资源。
 ```
 
+## tcpdump
 
+```sh
+sudo tcpdump -i lo -w log.cap
+```
 
+## curl编译支持http3
 
+https://github.com/curl/curl/blob/master/docs/HTTP3.md
 
+## http3测试网站
 
+https://bagder.github.io/HTTP3-test/
+https://github.com/bagder/HTTP3-test
 
 
 
